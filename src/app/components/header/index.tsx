@@ -45,7 +45,7 @@ const AppHeader: React.FC<Props> = ({ drawerState, setDrawerState }) => {
           noWrap
           className={classes.title}
         >
-          My Wallet
+          Daily Salt
         </Typography>
       </Toolbar>
     </AppBar>
