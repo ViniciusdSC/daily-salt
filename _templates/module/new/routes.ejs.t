@@ -9,7 +9,7 @@ import <%= h.changeCase.pascalCase(name) %>Home from './pages/home';
 const <%= h.changeCase.pascalCase(name) %>Routes: AppRouteInterface[] = [
   {
     path: '/<%= h.changeCase.paramCase(name) %>',
-    component: <%= h.changeCase.pascalCase(name) %>Home,
+    Component: <%= h.changeCase.pascalCase(name) %>Home,
   },
 ];
 

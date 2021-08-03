@@ -12,19 +12,19 @@ import <%= h.changeCase.pascalCase(name) %>View from './pages/view';
 const <%= h.changeCase.pascalCase(name) %>Routes: AppRouteInterface[] = [
   {
     path: '/<%= h.changeCase.paramCase(name) %>',
-    component: <%= h.changeCase.pascalCase(name) %>Home,
+    Component: <%= h.changeCase.pascalCase(name) %>Home,
   },
   {
     path: '/<%= h.changeCase.paramCase(name) %>/create',
-    component: <%= h.changeCase.pascalCase(name) %>Create,
+    Component: <%= h.changeCase.pascalCase(name) %>Create,
   },
   {
     path: '/<%= h.changeCase.paramCase(name) %>/edit/:id',
-    component: <%= h.changeCase.pascalCase(name) %>Edit,
+    Component: <%= h.changeCase.pascalCase(name) %>Edit,
   },
   {
     path: '/<%= h.changeCase.paramCase(name) %>/view/:id',
-    component: <%= h.changeCase.pascalCase(name) %>View,
+    Component: <%= h.changeCase.pascalCase(name) %>View,
   },
 ];
 
