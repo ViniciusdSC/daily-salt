@@ -19,23 +19,37 @@ const AppHeader: React.FC<Props> = ({ drawerState, setDrawerState }) => {
   const classes = useStyles();
 
   return (
-    <AppBar elevation={0} position="absolute" className={clsx(classes.appBar, drawerState && classes.appBarShift)}>
+    <AppBar
+      color="inherit"
+      elevation={0}
+      position="absolute"
+      className={clsx(classes.appBar, drawerState && classes.appBarShift)}
+    >
       <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"
           color="inherit"
           aria-label="open drawer"
           onClick={() => setDrawerState(true)}
-          className={clsx(classes.menuButton, drawerState && classes.menuButtonHidden)}
+          className={clsx(
+            classes.menuButton,
+            drawerState && classes.menuButtonHidden,
+          )}
         >
           <MenuIcon />
         </IconButton>
-        <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-          Dashboard
+        <Typography
+          component="h1"
+          variant="h6"
+          color="inherit"
+          noWrap
+          className={classes.title}
+        >
+          My Wallet
         </Typography>
       </Toolbar>
     </AppBar>
   );
-}
+};
 
 export default AppHeader;

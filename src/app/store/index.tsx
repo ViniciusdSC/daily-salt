@@ -1,17 +1,26 @@
-import { combineReducers, createStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { combineReducers, createStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { spentTypeSlice } from 'spent-type/store';
+import { spentSlice } from 'spent/store';
+import { recipeTypeSlice } from 'recipe-type/store';
+import { recipeSlice } from 'recipe/store';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  spentType: spentTypeSlice.reducer,
+  spent: spentSlice.reducer,
+  recipeType: recipeTypeSlice.reducer,
+  recipe: recipeSlice.reducer,
+});
 
 const persistedReducer = persistReducer(
   {
-    key: "root",
+    key: 'root',
     storage,
     blacklist: [],
   },
-  rootReducer
+  rootReducer,
 );
 
 export const store = createStore(persistedReducer);

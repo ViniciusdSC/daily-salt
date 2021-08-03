@@ -1,20 +1,42 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { Switch, Route } from 'react-router-dom';
 
-const AppRoutes: React.FC = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <h1>Hello World</h1>
-        </Route>
-      </Switch>
-    </Router>
-  )
-}
+import RecipeTypeRoutes from 'recipe-type/routes';
+import RecipeRoutes from 'recipe/routes';
+import SpentTypeRoutes from 'spent-type/routes';
+import SpentRoutes from 'spent/routes';
+
+const AppRoutes: React.FC = () => (
+  <Switch>
+    {RecipeTypeRoutes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        <Component />
+      </Route>
+    ))}
+
+    {RecipeRoutes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        <Component />
+      </Route>
+    ))}
+
+    {SpentRoutes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        <Component />
+      </Route>
+    ))}
+
+    {SpentTypeRoutes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        <Component />
+      </Route>
+    ))}
+
+    {/* fallback */}
+    <Route exact path="/">
+      <h1>Hello World</h1>
+    </Route>
+  </Switch>
+);
 
 export default AppRoutes;
