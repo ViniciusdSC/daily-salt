@@ -4,6 +4,7 @@ import UserConfigForm from 'user-config/components/form';
 import { useUserConfigFormik } from 'user-config/components/form/hooks';
 import { useSetUserConfig, useUserConfig } from 'user-config/hooks';
 import { useHistory } from 'react-router-dom';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 interface Props { }
 
@@ -22,6 +23,10 @@ const UserConfigEdit: React.FC<Props> = () => {
   React.useEffect(() => {
     formik.setValues(model);
   }, [model, formik.setValues]);
+
+  useSetBreadcrumbs([
+    { to: '/user-config', label: 'Settings' },
+  ], 'Edit');
 
   return (
     <AppPaper title="Edit Settings">

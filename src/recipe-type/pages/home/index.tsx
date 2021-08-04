@@ -7,6 +7,7 @@ import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { useHistory } from 'react-router-dom';
 import { useDeleteRecipeType, useRecipeTypes } from 'recipe-type/hooks';
 import AppToolbarSelect from 'app/components/datatable/toolbar-select';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 interface Props { }
 
@@ -27,6 +28,8 @@ const RecipeTypeHome: React.FC<Props> = () => {
   const models = useRecipeTypes();
   const history = useHistory();
   const deleteRecipeType = useDeleteRecipeType();
+
+  useSetBreadcrumbs([], 'Recipe Type');
 
   const RecipeTypeActions = (
     <Tooltip title="New Recipe type">

@@ -10,9 +10,10 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { useDeleteRecipeType, useRecipeTypeById } from 'recipe-type/hooks';
 import AppPaper from 'app/components/paper';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 import useStyles from './styles';
 
-interface Props {}
+interface Props { }
 
 const RecipeTypeView: React.FC<Props> = () => {
   const classes = useStyles();
@@ -25,6 +26,10 @@ const RecipeTypeView: React.FC<Props> = () => {
     history.push('/recipe-type');
     await deleteRecipeType(model.id);
   }
+
+  useSetBreadcrumbs([
+    { to: '/recipe-type', label: 'Recipe Type' },
+  ], model.name);
 
   const Actions = (
     <div>

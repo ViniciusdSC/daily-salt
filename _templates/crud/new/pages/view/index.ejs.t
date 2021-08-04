@@ -15,6 +15,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { useDelete<%= h.changeCase.pascalCase(name) %>, use<%= h.changeCase.pascalCase(name) %>ById } from '<%= h.changeCase.paramCase(name) %>/hooks';
 import AppPaper from 'app/components/paper';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 import useStyles from './styles';
 
 interface Props {}
@@ -30,6 +31,11 @@ const <%= h.changeCase.pascalCase(name) %>View: React.FC<Props> = () => {
     history.push('/<%= h.changeCase.paramCase(name) %>');
     await delete<%= h.changeCase.pascalCase(name) %>(model.id);
   }
+
+  useSetBreadcrumbs([
+    { to: '/<%= h.changeCase.paramCase(name) %>', label: '<%= h.changeCase.<%= h.changeCase.sentenceCase(name) %>(name) %>' },
+    { to: `/<%= h.changeCase.paramCase(name) %>/view/${model.id}`, label: model.name },
+  ], 'View');
 
   const Actions = (
     <div>

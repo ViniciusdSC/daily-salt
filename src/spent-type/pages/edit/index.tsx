@@ -4,6 +4,7 @@ import SpentTypeForm from 'spent-type/components/form';
 import { useSpentTypeById, useUpdateSpentType } from 'spent-type/hooks';
 import { useHistory, useParams } from 'react-router-dom';
 import { useSpentTypeFormik } from 'spent-type/components/form/hooks';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 const SpentTypeEdit: React.FC = () => {
   const { id } = useParams<{
@@ -19,6 +20,11 @@ const SpentTypeEdit: React.FC = () => {
       history.push('/spent-type');
     },
   });
+
+  useSetBreadcrumbs([
+    { to: '/spent-type', label: 'Spent Type' },
+    { to: `/spent-type/view/${model.id}`, label: model.name },
+  ], 'Edit');
 
   React.useEffect(() => {
     formik.setValues(model);

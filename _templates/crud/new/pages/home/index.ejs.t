@@ -11,6 +11,7 @@ import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { useHistory } from 'react-router-dom';
 import { useDelete<%= h.changeCase.pascalCase(name) %>, use<%= h.changeCase.pascalCase(name) %>s } from '<%= h.changeCase.paramCase(name) %>/hooks';
 import AppToolbarSelect from 'app/components/datatable/toolbar-select';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 interface Props { }
 
@@ -31,6 +32,8 @@ const <%= h.changeCase.pascalCase(name) %>Home: React.FC<Props> = () => {
   const models = use<%= h.changeCase.pascalCase(name) %>s();
   const history = useHistory();
   const delete<%= h.changeCase.pascalCase(name) %> = useDelete<%= h.changeCase.pascalCase(name) %>();
+
+  useSetBreadcrumbs([], '<%= h.changeCase.<%= h.changeCase.sentenceCase(name) %>(name) %>');
 
   const <%= h.changeCase.pascalCase(name) %>Actions = (
     <Tooltip title="New <%= h.changeCase.sentenceCase(name) %>">

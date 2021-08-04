@@ -4,6 +4,7 @@ import RecipeForm from 'recipe/components/form';
 import { useStoreRecipe } from 'recipe/hooks';
 import { useHistory } from 'react-router-dom';
 import { useRecipeFormik } from 'recipe/components/form/hooks';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 const RecipeCreate: React.FC = () => {
   const storeRecipe = useStoreRecipe();
@@ -15,6 +16,10 @@ const RecipeCreate: React.FC = () => {
       history.push('/recipe');
     },
   });
+
+  useSetBreadcrumbs([
+    { to: '/recipe', label: 'Recipe' },
+  ], 'Create');
 
   return (
     <AppPaper title="New Recipe">

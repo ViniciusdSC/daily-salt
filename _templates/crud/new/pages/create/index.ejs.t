@@ -8,6 +8,7 @@ import <%= h.changeCase.pascalCase(name) %>Form from '<%= h.changeCase.paramCase
 import { useStore<%= h.changeCase.pascalCase(name) %> } from '<%= h.changeCase.paramCase(name) %>/hooks';
 import { useHistory } from 'react-router-dom';
 import { use<%= h.changeCase.pascalCase(name) %>Formik } from '<%= h.changeCase.paramCase(name) %>/components/form/hooks';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 const <%= h.changeCase.pascalCase(name) %>Create: React.FC = () => {
   const store<%= h.changeCase.pascalCase(name) %> = useStore<%= h.changeCase.pascalCase(name) %>();
@@ -19,6 +20,10 @@ const <%= h.changeCase.pascalCase(name) %>Create: React.FC = () => {
       history.push('/<%= h.changeCase.paramCase(name) %>');
     },
   });
+
+  useSetBreadcrumbs([
+    { to: '/<%= h.changeCase.paramCase(name) %>', label: '<%= h.changeCase.<%= h.changeCase.sentenceCase(name) %>(name) %>' },
+  ], 'Create');
 
   return (
     <AppPaper title="New <%= h.changeCase.sentenceCase(name) %>">

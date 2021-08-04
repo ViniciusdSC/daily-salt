@@ -8,6 +8,7 @@ import <%= h.changeCase.pascalCase(name) %>Form from '<%= h.changeCase.paramCase
 import { use<%= h.changeCase.pascalCase(name) %>ById, useUpdate<%= h.changeCase.pascalCase(name) %> } from '<%= h.changeCase.paramCase(name) %>/hooks';
 import { useHistory, useParams } from 'react-router-dom';
 import { use<%= h.changeCase.pascalCase(name) %>Formik } from '<%= h.changeCase.paramCase(name) %>/components/form/hooks';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 const <%= h.changeCase.pascalCase(name) %>Edit: React.FC = () => {
   const { id } = useParams<{
@@ -27,6 +28,11 @@ const <%= h.changeCase.pascalCase(name) %>Edit: React.FC = () => {
   React.useEffect(() => {
     formik.setValues(model);
   }, [model, formik.setValues]);
+
+  useSetBreadcrumbs([
+    { to: '/<%= h.changeCase.paramCase(name) %>', label: '<%= h.changeCase.<%= h.changeCase.sentenceCase(name) %>(name) %>' },
+    { to: `/<%= h.changeCase.paramCase(name) %>/edit/${model.id}`, label: model.name },
+  ], 'Edit');
 
   return (
     <AppPaper title={model.name}>

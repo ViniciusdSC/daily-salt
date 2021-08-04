@@ -4,6 +4,7 @@ import RecipeTypeForm from 'recipe-type/components/form';
 import { useRecipeTypeById, useUpdateRecipeType } from 'recipe-type/hooks';
 import { useHistory, useParams } from 'react-router-dom';
 import { useRecipeTypeFormik } from 'recipe-type/components/form/hooks';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 const RecipeTypeEdit: React.FC = () => {
   const { id } = useParams<{
@@ -19,6 +20,11 @@ const RecipeTypeEdit: React.FC = () => {
       history.push('/recipe-type');
     },
   });
+
+  useSetBreadcrumbs([
+    { to: '/recipe-type', label: 'Recipe Type' },
+    { to: `/recipe-type/view/${model.id}`, label: model.name },
+  ], 'Edit');
 
   React.useEffect(() => {
     formik.setValues(model);

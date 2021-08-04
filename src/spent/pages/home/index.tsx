@@ -7,6 +7,7 @@ import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { useHistory } from 'react-router-dom';
 import { useDeleteSpent, useSpents } from 'spent/hooks';
 import AppToolbarSelect from 'app/components/datatable/toolbar-select';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 
 interface Props { }
 
@@ -35,6 +36,8 @@ const SpentHome: React.FC<Props> = () => {
   const models = useSpents();
   const history = useHistory();
   const deleteSpent = useDeleteSpent();
+
+  useSetBreadcrumbs([], 'Spent');
 
   const SpentActions = (
     <Tooltip title="New Spent">

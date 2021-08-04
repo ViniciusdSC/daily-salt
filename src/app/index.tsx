@@ -7,6 +7,7 @@ import AppDrawer from './components/drawer';
 import AppRoutes from './components/routes';
 
 import useStyles from './styles';
+import AppBreadcrumbs from './components/breadcrumbs';
 
 const App: React.FC = () => {
   const classes = useStyles();
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           <Container maxWidth="lg" className={classes.container}>
+            <AppBreadcrumbs />
             <AppRoutes />
           </Container>
         </main>

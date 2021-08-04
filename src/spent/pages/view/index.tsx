@@ -10,9 +10,10 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { useDeleteSpent, useSpentById } from 'spent/hooks';
 import AppPaper from 'app/components/paper';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 import useStyles from './styles';
 
-interface Props {}
+interface Props { }
 
 const SpentView: React.FC<Props> = () => {
   const classes = useStyles();
@@ -25,6 +26,10 @@ const SpentView: React.FC<Props> = () => {
     history.push('/spent');
     await deleteSpent(model.id);
   }
+
+  useSetBreadcrumbs([
+    { to: '/spent', label: 'Spent' },
+  ], model.name);
 
   const Actions = (
     <div>

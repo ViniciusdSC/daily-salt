@@ -9,6 +9,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
+import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 import useStyles from './styles';
 
 interface Props { }
@@ -24,6 +25,8 @@ const UserConfigHome: React.FC<Props> = () => {
   const dailyGoalInFullMounth = currentMounth.getDate() * +model.dailyGoal;
   const dailyGoalInRelativeMounth = (currentMounth.getDate() - today.getDate()) * +model.dailyGoal;
   const weekGoalInFullMounth = 4 * +model.weekGoal;
+
+  useSetBreadcrumbs([], 'Settings');
 
   const Actions = (
     <div>
