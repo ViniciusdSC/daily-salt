@@ -5,6 +5,7 @@ import RecipeTypeRoutes from 'recipe-type/routes';
 import RecipeRoutes from 'recipe/routes';
 import SpentTypeRoutes from 'spent-type/routes';
 import SpentRoutes from 'spent/routes';
+import UserConfigRoutes from 'user-config/routes';
 
 const AppRoutes: React.FC = () => (
   <Switch>
@@ -27,6 +28,12 @@ const AppRoutes: React.FC = () => (
     ))}
 
     {SpentTypeRoutes.map(({ path, Component }) => (
+      <Route key={path} exact path={path}>
+        <Component />
+      </Route>
+    ))}
+
+    {UserConfigRoutes.map(({ path, Component }) => (
       <Route key={path} exact path={path}>
         <Component />
       </Route>

@@ -15,6 +15,7 @@ import BookmarksIcon from '@material-ui/icons/Bookmarks';
 import PaymentIcon from '@material-ui/icons/Payment';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import MoneyIcon from '@material-ui/icons/Money';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
@@ -72,6 +73,12 @@ const AppDrawer: React.FC<Props> = ({ setDrawerState, drawerState }) => {
             <MoneyIcon />
           </ListItemIcon>
           <ListItemText primary="Recipe" />
+        </ListItem>
+        <ListItem button onClick={() => history.push('/user-config')}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
         </ListItem>
       </List>
     </Drawer>

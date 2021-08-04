@@ -6,12 +6,14 @@ import { spentTypeSlice } from 'spent-type/store';
 import { spentSlice } from 'spent/store';
 import { recipeTypeSlice } from 'recipe-type/store';
 import { recipeSlice } from 'recipe/store';
+import { userConfigSlice } from 'user-config/store';
 
 const rootReducer = combineReducers({
   spentType: spentTypeSlice.reducer,
   spent: spentSlice.reducer,
   recipeType: recipeTypeSlice.reducer,
   recipe: recipeSlice.reducer,
+  userConfig: userConfigSlice.reducer,
 });
 
 const persistedReducer = persistReducer(

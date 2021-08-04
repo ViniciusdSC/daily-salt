@@ -3,7 +3,7 @@ import { UserConfigInterface } from './interfaces';
 import { actions as UserConfigActions } from './store';
 
 export function useUserConfig() {
-  return useAppSelector(({ userConfig }) => userConfig);
+  return useAppSelector(({ userConfig }) => userConfig.model);
 }
 
 export function useSetUserConfig() {

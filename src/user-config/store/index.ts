@@ -2,16 +2,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { UserConfigInterface } from 'user-config/interfaces';
 
-interface UserConfigState {}
+interface UserConfigState {
+  model: UserConfigInterface
+}
 
-const initialState: UserConfigState = {};
+const initialState: UserConfigState = {
+  model: {
+    dailyGoal: 0,
+    weekGoal: 0,
+    mounthGoal: 0,
+  },
+};
 
 export const userConfigSlice = createSlice({
   name: 'user-config',
   initialState,
   reducers: {
     set(state, action: PayloadAction<UserConfigInterface>) {
-      state = action.payload;
+      state.model = action.payload;
     },
   },
 });
