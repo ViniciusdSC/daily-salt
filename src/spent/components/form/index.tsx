@@ -4,11 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Switch from '@material-ui/core/Switch';
 
 import { useFilterSpentTypes } from 'spent-type/hooks';
 import { SpentTypeInterface } from 'spent-type/interfaces';
-import { FormControlLabel } from '@material-ui/core';
+import MenuItem from '@material-ui/core/MenuItem';
 import useStyles from './styles';
 import { SpentFormValues } from './interfaces';
 
@@ -24,7 +23,7 @@ const SpentForm: React.FC<Props> = ({ formik }) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item md={6} xs={12}>
           <Autocomplete
             options={spentTypes}
             getOptionLabel={(option) => option.name}
@@ -46,6 +45,32 @@ const SpentForm: React.FC<Props> = ({ formik }) => {
             }}
             freeSolo
           />
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <TextField
+            select
+            label="Spent Mode"
+            value={formik.values.mode}
+            onChange={(event) => {
+              formik.setFieldValue('mode', event.target.value);
+            }}
+            fullWidth
+            variant="outlined"
+            margin="dense"
+          >
+            <MenuItem value="daily">
+              Daily
+            </MenuItem>
+            <MenuItem value="weekly">
+              Weekly
+            </MenuItem>
+            <MenuItem value="monthly">
+              Monthly
+            </MenuItem>
+            <MenuItem value="repeatable">
+              Repeatable
+            </MenuItem>
+          </TextField>
         </Grid>
         <Grid item md={6} xs={12}>
           <TextField
@@ -73,7 +98,7 @@ const SpentForm: React.FC<Props> = ({ formik }) => {
             error={Boolean(formik.errors?.value)}
           />
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <FormControlLabel
             control={(
               <Switch
@@ -87,7 +112,7 @@ const SpentForm: React.FC<Props> = ({ formik }) => {
             )}
             label="Repeat"
           />
-        </Grid>
+        </Grid> */}
         <Grid item xs={12}>
           <Button className={classes.submit} type="submit" variant="outlined">
             Submit

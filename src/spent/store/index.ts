@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { SpentInterface } from 'spent/interfaces';
+import { SpentInterface, SpentTableTabType } from 'spent/interfaces';
 import { SpentFormValues } from 'spent/components/form/interfaces';
 
 interface SpentState {
   list: SpentInterface[];
+  tableTab: SpentTableTabType
 }
 
 const initialState: SpentState = {
   list: [],
+  tableTab: 'daily',
 };
 
 export const spentSlice = createSlice({
@@ -38,6 +40,9 @@ export const spentSlice = createSlice({
     },
     set(state, action: PayloadAction<SpentInterface[]>) {
       state.list = action.payload;
+    },
+    setTableTab(state, action: PayloadAction<SpentTableTabType>) {
+      state.tableTab = action.payload;
     },
   },
 });

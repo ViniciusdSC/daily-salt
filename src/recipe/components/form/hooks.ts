@@ -11,7 +11,7 @@ export function useRecipeFormik({
       name: '',
       recipeTypeId: '',
       value: 0,
-      repeat: false,
+      mode: 'daily',
     },
     onSubmit,
   });

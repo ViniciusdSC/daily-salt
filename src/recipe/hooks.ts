@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from 'app/store';
+import { useEffect, useState } from 'react';
 import { RecipeFormValues } from './components/form/interfaces';
-import { RecipeInterface } from './interfaces';
+import { RecipeInterface, RecipeTableTabType } from './interfaces';
 import { actions as RecipeActions } from './store';
 
 export function useStoreRecipe() {
@@ -52,4 +53,30 @@ export function useRecipeById(id: string) {
   }
 
   return model;
+}
+
+export function useRecipeTableTab() {
+  return useAppSelector(({ recipe }) => recipe.tableTab);
+}
+
+export function useSetRecipeTableTab() {
+  const dispatch = useAppDispatch();
+
+  return async function (tableTab: RecipeTableTabType) {
+    dispatch(RecipeActions.setTableTab(tableTab));
+  };
+}
+
+export function useRecipeTable() {
+  const [models, setModels] = useState<RecipeInterface[]>([]);
+  const recipes = useRecipes();
+  const recipeTableTab = useRecipeTableTab();
+
+  useEffect(() => {
+    setModels(recipes.filter((item) => (
+      item.mode === recipeTableTab || recipeTableTab === 'total'
+    )));
+  }, [recipeTableTab, recipes]);
+
+  return models;
 }

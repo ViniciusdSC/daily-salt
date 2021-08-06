@@ -5,9 +5,12 @@ import AddIcon from '@material-ui/icons/Add';
 import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 
 import { useHistory } from 'react-router-dom';
-import { useDeleteRecipe, useRecipes } from 'recipe/hooks';
+import {
+  useDeleteRecipe, useRecipeTable,
+} from 'recipe/hooks';
 import AppToolbarSelect from 'app/components/datatable/toolbar-select';
 import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
+import RecipeTableToolbar from 'recipe/components/toobar';
 
 interface Props { }
 
@@ -26,14 +29,14 @@ const columns: MUIDataTableColumnDef[] = [
     name: 'value',
     label: 'Value',
   },
-  {
-    name: 'repeat',
-    label: 'Repeat',
-  },
+  // {
+  //   name: 'repeat',
+  //   label: 'Repeat',
+  // },
 ];
 
 const RecipeHome: React.FC<Props> = () => {
-  const models = useRecipes();
+  const models = useRecipeTable();
   const history = useHistory();
   const deleteRecipe = useDeleteRecipe();
 
@@ -58,7 +61,6 @@ const RecipeHome: React.FC<Props> = () => {
         id: model.id,
         name: model.name,
         value: model.value,
-        repeat: model.repeat ? 'Sim' : 'Não',
       }))}
       options={{
         serverSide: true,
@@ -80,6 +82,9 @@ const RecipeHome: React.FC<Props> = () => {
             }}
           />
         ),
+      }}
+      components={{
+        TableToolbar: RecipeTableToolbar,
       }}
     />
   );

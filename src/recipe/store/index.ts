@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { RecipeInterface } from 'recipe/interfaces';
+import { RecipeInterface, RecipeTableTabType } from 'recipe/interfaces';
 import { RecipeFormValues } from 'recipe/components/form/interfaces';
 
 interface RecipeState {
   list: RecipeInterface[];
+  tableTab: RecipeTableTabType
 }
 
 const initialState: RecipeState = {
   list: [],
+  tableTab: 'daily',
 };
 
 export const recipeSlice = createSlice({
@@ -38,6 +40,9 @@ export const recipeSlice = createSlice({
     },
     set(state, action: PayloadAction<RecipeInterface[]>) {
       state.list = action.payload;
+    },
+    setTableTab(state, action: PayloadAction<RecipeTableTabType>) {
+      state.tableTab = action.payload;
     },
   },
 });

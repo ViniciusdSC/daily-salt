@@ -11,7 +11,7 @@ export function useSpentFormik({
       spentTypeId: '',
       name: '',
       value: 0,
-      repeat: false,
+      mode: 'daily',
     },
     onSubmit,
   });

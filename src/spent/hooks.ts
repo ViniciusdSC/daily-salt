@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from 'app/store';
+import { useState, useEffect } from 'react';
 import { SpentFormValues } from './components/form/interfaces';
-import { SpentInterface } from './interfaces';
+import { SpentInterface, SpentTableTabType } from './interfaces';
 import { actions as SpentActions } from './store';
 
 export function useStoreSpent() {
@@ -52,4 +53,30 @@ export function useSpentById(id: string) {
   }
 
   return model;
+}
+
+export function useSpentTableTab() {
+  return useAppSelector(({ spent }) => spent.tableTab);
+}
+
+export function useSetSpentTableTab() {
+  const dispatch = useAppDispatch();
+
+  return async function (tableTab: SpentTableTabType) {
+    dispatch(SpentActions.setTableTab(tableTab));
+  };
+}
+
+export function useSpentTable() {
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const spentTableTab = useSpentTableTab();
+
+  useEffect(() => {
+    setModels(spents.filter((item) => (
+      item.mode === spentTableTab || spentTableTab === 'total'
+    )));
+  }, [spentTableTab, spents]);
+
+  return models;
 }
