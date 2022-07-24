@@ -4,6 +4,7 @@ export interface SpentInterface {
   mode: 'daily' | 'weekly' | 'monthly' | 'repeatable';
   name: string;
   value: number;
+  createdAt: Date;
 }
 
 export type SpentTableTabType = 'daily' | 'weekly' | 'monthly' | 'repeatable' | 'total';

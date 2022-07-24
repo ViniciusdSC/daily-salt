@@ -1,3 +1,3 @@
 import { SpentInterface } from 'spent/interfaces';
 
-export type SpentFormValues = Omit<SpentInterface, 'id'>;
+export type SpentFormValues = Omit<SpentInterface, 'id'|'createdAt'>;

@@ -80,3 +80,67 @@ export function useSpentTable() {
 
   return models;
 }
+
+export function useCurrentDailySpentValue() {
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'daily'
+        && itemDate.getDate() === today.getDate()
+        && itemDate.getMonth() === today.getMonth()
+        && itemDate.getFullYear() === today.getFullYear()
+      );
+    }));
+  }, [spents]);
+
+  return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}
+
+export function useCurrentWeeklySpentValue() {
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+
+  const minDay = today.getDate() - today.getDay();
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'weekly'
+        && itemDate.getDate() > minDay
+        && itemDate.getMonth() === today.getMonth()
+        && itemDate.getFullYear() === today.getFullYear()
+      );
+    }));
+  }, [spents]);
+
+  return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}
+
+export function useCurrentMonthlySpentValue() {
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'monthly'
+        && itemDate.getMonth() === today.getMonth()
+        && itemDate.getFullYear() === today.getFullYear()
+      );
+    }));
+  }, [spents]);
+
+  return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}

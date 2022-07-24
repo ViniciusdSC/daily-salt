@@ -37,6 +37,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "hygen": "hygen",
     "generate:module": "hygen module new",
     "generate:crud": "hygen crud new"

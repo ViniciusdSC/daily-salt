@@ -1,3 +1,4 @@
+import AppDashboard from 'app/pages/dashboard';
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
@@ -41,7 +42,7 @@ const AppRoutes: React.FC = () => (
 
     {/* fallback */}
     <Route exact path="/">
-      <h1>Hello World</h1>
+      <AppDashboard />
     </Route>
   </Switch>
 );

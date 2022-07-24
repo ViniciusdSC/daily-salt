@@ -21,16 +21,20 @@ export const spentSlice = createSlice({
     store(state, action: PayloadAction<SpentFormValues>) {
       state.list.push({
         id: uuidv4(),
+        createdAt: new Date(),
         ...action.payload,
       });
     },
-    update(state, action: PayloadAction<SpentInterface>) {
+    update(state, action: PayloadAction<Omit<SpentInterface, 'createdAt'>>) {
       const index = state.list.findIndex(
         (model) => model.id === action.payload.id,
       );
 
       if (index >= 0) {
-        state.list[index] = action.payload;
+        state.list[index] = {
+          ...action.payload,
+          createdAt: state.list[index].createdAt,
+        };
       }
     },
     delete(state, action: PayloadAction<string>) {
