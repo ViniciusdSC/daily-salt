@@ -144,3 +144,14 @@ export function useCurrentMonthlySpentValue() {
 
   return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
 }
+
+export function useRepeatableSpentValue() {
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+
+  useEffect(() => {
+    setModels(spents.filter((item) => item.mode === 'repeatable'));
+  }, [spents]);
+
+  return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}

@@ -9,13 +9,19 @@ import Paper from '@material-ui/core/Paper';
 
 import { useSetBreadcrumbs } from 'app/components/breadcrumbs/hooks';
 import { useUserConfig } from 'user-config/hooks';
-import { useCurrentDailySpentValue, useCurrentMonthlySpentValue, useCurrentWeeklySpentValue } from 'spent/hooks';
+import {
+  useCurrentDailySpentValue,
+  useCurrentMonthlySpentValue,
+  useCurrentWeeklySpentValue,
+  useRepeatableSpentValue,
+} from 'spent/hooks';
 
 const AppDashboard: React.FC = () => {
   const userConfig = useUserConfig();
   const currentWeeklySpentValue = useCurrentWeeklySpentValue();
   const currentDailySpentValue = useCurrentDailySpentValue();
   const currentMounthlySpentValue = useCurrentMonthlySpentValue();
+  const repeatableSpentValue = useRepeatableSpentValue();
 
   useSetBreadcrumbs([], 'Dashboard');
 
@@ -51,9 +57,9 @@ const AppDashboard: React.FC = () => {
           </TableRow>
           <TableRow>
             <TableCell>Repeatable</TableCell>
-            <TableCell align="right">10</TableCell>
-            <TableCell align="right">20</TableCell>
-            <TableCell align="right">40</TableCell>
+            <TableCell align="right">{repeatableSpentValue}</TableCell>
+            <TableCell align="right">{userConfig.repeatableGoal}</TableCell>
+            <TableCell align="right">{userConfig.repeatableGoal - repeatableSpentValue}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

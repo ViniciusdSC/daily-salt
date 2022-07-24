@@ -50,7 +50,7 @@ const UserConfigForm: React.FC<Props> = ({ formik }) => {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <TextField
             label="Mounth Goal"
             variant="outlined"
@@ -61,6 +61,22 @@ const UserConfigForm: React.FC<Props> = ({ formik }) => {
             value={formik.values.mounthGoal ? formik.values.mounthGoal : null}
             helperText={formik.errors?.mounthGoal}
             error={Boolean(formik.errors?.mounthGoal)}
+            InputProps={{
+              inputComponent: AppMoneyFormat as any,
+            }}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            label="Repeatable Goal"
+            variant="outlined"
+            margin="dense"
+            name="repeatableGoal"
+            fullWidth
+            onChange={formik.handleChange}
+            value={formik.values.repeatableGoal ? formik.values.repeatableGoal : null}
+            helperText={formik.errors?.repeatableGoal}
+            error={Boolean(formik.errors?.repeatableGoal)}
             InputProps={{
               inputComponent: AppMoneyFormat as any,
             }}

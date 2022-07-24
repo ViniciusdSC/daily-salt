@@ -11,6 +11,7 @@ const initialState: UserConfigState = {
     dailyGoal: 0,
     weekGoal: 0,
     mounthGoal: 0,
+    repeatableGoal: 0,
   },
 };
 

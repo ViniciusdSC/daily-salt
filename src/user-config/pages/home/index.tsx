@@ -26,6 +26,9 @@ const UserConfigHome: React.FC<Props> = () => {
   const dailyGoalInRelativeMounth = (currentMounth.getDate() - today.getDate()) * +model.dailyGoal;
   const weekGoalInFullMounth = 4 * +model.weekGoal;
 
+  const total = weekGoalInFullMounth
+    + +model.mounthGoal + dailyGoalInFullMounth + +model.repeatableGoal;
+
   useSetBreadcrumbs([], 'Settings');
 
   const Actions = (
@@ -34,7 +37,6 @@ const UserConfigHome: React.FC<Props> = () => {
         <Button
           startIcon={<EditIcon />}
           variant="outlined"
-          color="primary"
           onClick={() => {
             history.push('/user-config/edit');
           }}
@@ -49,7 +51,7 @@ const UserConfigHome: React.FC<Props> = () => {
     <AppPaper title="Settings" actions={Actions}>
       <Grid container spacing={2}>
         <Grid item md={6}>
-          <Card className={classes.root} variant="elevation">
+          <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography variant="h6" component="h2">
                 Daily Goal
@@ -91,7 +93,7 @@ const UserConfigHome: React.FC<Props> = () => {
           </Card>
         </Grid>
         <Grid item md={6}>
-          <Card className={classes.root} variant="elevation">
+          <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography variant="h6" component="h2">
                 Week Goal
@@ -112,7 +114,7 @@ const UserConfigHome: React.FC<Props> = () => {
           </Card>
         </Grid>
         <Grid item md={6}>
-          <Card className={classes.root} variant="elevation">
+          <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography variant="h6" component="h2">
                 Mounth Goal
@@ -128,18 +130,25 @@ const UserConfigHome: React.FC<Props> = () => {
           </Card>
         </Grid>
         <Grid item md={6}>
-          <Card className={classes.root} variant="elevation">
+          <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography variant="h6" component="h2">
-                Total
+                Repeatable
               </Typography>
               <Typography color="textSecondary">
                 $
                 {' '}
-                {weekGoalInFullMounth + +model.mounthGoal + dailyGoalInFullMounth}
+                {model.repeatableGoal}
               </Typography>
             </CardContent>
           </Card>
+        </Grid>
+        <Grid item md={6}>
+          <Typography variant="h6" gutterBottom>
+            Total:
+            {' '}
+            {total}
+          </Typography>
         </Grid>
       </Grid>
     </AppPaper>
