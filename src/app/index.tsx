@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@material-ui/core/Container';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
 import AppHeader from './components/header';
 import AppDrawer from './components/drawer';
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(true);
 
   return (
-    <Router basename={process.env.REACT_APP_BASE_URL || undefined}>
+    <Router>
       <div className={classes.root}>
         <AppHeader drawerState={openDrawer} setDrawerState={setOpenDrawer} />
         <AppDrawer drawerState={openDrawer} setDrawerState={setOpenDrawer} />
