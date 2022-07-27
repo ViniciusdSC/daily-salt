@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/daily-salt/static/css/main.c5948a16.chunk.css",
-    "main.js": "/daily-salt/static/js/main.a54c2dcc.chunk.js",
-    "main.js.map": "/daily-salt/static/js/main.a54c2dcc.chunk.js.map",
+    "main.js": "/daily-salt/static/js/main.eec3e9ce.chunk.js",
+    "main.js.map": "/daily-salt/static/js/main.eec3e9ce.chunk.js.map",
     "runtime-main.js": "/daily-salt/static/js/runtime-main.6f43bce2.js",
     "runtime-main.js.map": "/daily-salt/static/js/runtime-main.6f43bce2.js.map",
     "static/js/2.4cb80b5f.chunk.js": "/daily-salt/static/js/2.4cb80b5f.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.6f43bce2.js",
     "static/js/2.4cb80b5f.chunk.js",
     "static/css/main.c5948a16.chunk.css",
-    "static/js/main.a54c2dcc.chunk.js"
+    "static/js/main.eec3e9ce.chunk.js"
   ]
 }
