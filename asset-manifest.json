@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/daily-salt/static/css/main.c5948a16.chunk.css",
+    "main.js": "/daily-salt/static/js/main.3de30165.chunk.js",
+    "main.js.map": "/daily-salt/static/js/main.3de30165.chunk.js.map",
+    "runtime-main.js": "/daily-salt/static/js/runtime-main.6f43bce2.js",
+    "runtime-main.js.map": "/daily-salt/static/js/runtime-main.6f43bce2.js.map",
+    "static/js/2.4cb80b5f.chunk.js": "/daily-salt/static/js/2.4cb80b5f.chunk.js",
+    "static/js/2.4cb80b5f.chunk.js.map": "/daily-salt/static/js/2.4cb80b5f.chunk.js.map",
+    "index.html": "/daily-salt/index.html",
+    "static/css/main.c5948a16.chunk.css.map": "/daily-salt/static/css/main.c5948a16.chunk.css.map",
+    "static/js/2.4cb80b5f.chunk.js.LICENSE.txt": "/daily-salt/static/js/2.4cb80b5f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6f43bce2.js",
+    "static/js/2.4cb80b5f.chunk.js",
+    "static/css/main.c5948a16.chunk.css",
+    "static/js/main.3de30165.chunk.js"
+  ]
+}
