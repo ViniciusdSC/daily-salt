@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [openDrawer, setOpenDrawer] = React.useState<boolean>(true);
 
   return (
-    <Router>
+    <Router basename={process.env.REACT_APP_BASE_URL || undefined}>
       <div className={classes.root}>
         <AppHeader drawerState={openDrawer} setDrawerState={setOpenDrawer} />
         <AppDrawer drawerState={openDrawer} setDrawerState={setOpenDrawer} />

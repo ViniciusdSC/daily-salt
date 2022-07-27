@@ -9,25 +9,25 @@ import UserConfigRoutes from 'user-config/routes';
 const AppRoutes: React.FC = () => (
   <Switch>
     {SpentRoutes.map(({ path, Component }) => (
-      <Route key={path} exact path={path}>
+      <Route key={path} path={path}>
         <Component />
       </Route>
     ))}
 
     {SpentTypeRoutes.map(({ path, Component }) => (
-      <Route key={path} exact path={path}>
+      <Route key={path} path={path}>
         <Component />
       </Route>
     ))}
 
     {UserConfigRoutes.map(({ path, Component }) => (
-      <Route key={path} exact path={path}>
+      <Route key={path} path={path}>
         <Component />
       </Route>
     ))}
 
     {/* fallback */}
-    <Route exact path="/">
+    <Route path="/">
       <AppDashboard />
     </Route>
   </Switch>
