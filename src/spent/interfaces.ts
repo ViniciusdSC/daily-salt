@@ -7,4 +7,10 @@ export interface SpentInterface {
   createdAt: Date;
 }
 
+export interface AccumulatedBalance {
+  daily: number;
+  weekly: number;
+  monthly: number;
+}
+
 export type SpentTableTabType = 'daily' | 'weekly' | 'monthly' | 'repeatable' | 'total';

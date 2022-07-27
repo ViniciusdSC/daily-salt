@@ -1,8 +1,12 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  submit: {
-    float: 'right',
+  root: {},
+  chip: {
+    margin: '0 1em 0 0',
+  },
+  spentPeriodText: {
+    flex: 1,
   },
 }));
 

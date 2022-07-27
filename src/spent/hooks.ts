@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'app/store';
 import { useState, useEffect } from 'react';
+import { useUserConfig } from 'user-config/hooks';
 import { SpentFormValues } from './components/form/interfaces';
 import { SpentInterface, SpentTableTabType } from './interfaces';
 import { actions as SpentActions } from './store';
@@ -154,4 +155,76 @@ export function useRepeatableSpentValue() {
   }, [spents]);
 
   return models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}
+
+export function useAccumulatedDailyBalance(period = 30) {
+  const userConfig = useUserConfig();
+  const goal = userConfig.dailyGoal * period;
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+  const targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() - period);
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'daily'
+        && itemDate.getTime() <= today.getTime()
+        && itemDate.getTime() >= targetDate.getTime()
+      );
+    }));
+  }, [spents]);
+
+  return goal - models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}
+
+export function useAccumulatedWeeklyBalance(period = 30) {
+  const userConfig = useUserConfig();
+  const goal = (userConfig.weekGoal / 7) * period;
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+  const targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() - period);
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'weekly'
+        && itemDate.getTime() <= today.getTime()
+        && itemDate.getTime() >= targetDate.getTime()
+      );
+    }));
+  }, [spents]);
+
+  return goal - models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
+}
+
+export function useAccumulatedMonthlyBalance(period = 30) {
+  const userConfig = useUserConfig();
+  const goal = (userConfig.mounthGoal / 30) * period;
+  const [models, setModels] = useState<SpentInterface[]>([]);
+  const spents = useSpents();
+  const today = new Date();
+  const targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() - period);
+
+  useEffect(() => {
+    setModels(spents.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+
+      return (
+        item.mode === 'monthly'
+        && itemDate.getTime() <= today.getTime()
+        && itemDate.getTime() >= targetDate.getTime()
+      );
+    }));
+  }, [spents]);
+
+  return goal - models.map((item) => +item.value).reduce((prev, current) => prev + current, 0);
 }

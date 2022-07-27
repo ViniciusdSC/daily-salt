@@ -4,16 +4,12 @@ import storage from 'redux-persist/lib/storage';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { spentTypeSlice } from 'spent-type/store';
 import { spentSlice } from 'spent/store';
-import { recipeTypeSlice } from 'recipe-type/store';
-import { recipeSlice } from 'recipe/store';
 import { userConfigSlice } from 'user-config/store';
 import { appBreadcrumbSlice } from 'app/components/breadcrumbs/store';
 
 const rootReducer = combineReducers({
   spentType: spentTypeSlice.reducer,
   spent: spentSlice.reducer,
-  recipeType: recipeTypeSlice.reducer,
-  recipe: recipeSlice.reducer,
   userConfig: userConfigSlice.reducer,
   appBreadcrumb: appBreadcrumbSlice.reducer,
 });

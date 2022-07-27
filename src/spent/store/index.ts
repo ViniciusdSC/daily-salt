@@ -1,17 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 
-import { SpentInterface, SpentTableTabType } from 'spent/interfaces';
+import { AccumulatedBalance, SpentInterface, SpentTableTabType } from 'spent/interfaces';
 import { SpentFormValues } from 'spent/components/form/interfaces';
 
 interface SpentState {
   list: SpentInterface[];
-  tableTab: SpentTableTabType
+  tableTab: SpentTableTabType;
+  accumulatedBalance: AccumulatedBalance;
 }
 
 const initialState: SpentState = {
   list: [],
   tableTab: 'daily',
+  accumulatedBalance: {
+    daily: 0,
+    weekly: 0,
+    monthly: 0,
+  },
 };
 
 export const spentSlice = createSlice({
@@ -47,6 +53,15 @@ export const spentSlice = createSlice({
     },
     setTableTab(state, action: PayloadAction<SpentTableTabType>) {
       state.tableTab = action.payload;
+    },
+    setDailyAccumulatedBalance(state, action: PayloadAction<number>) {
+      state.accumulatedBalance.daily = action.payload;
+    },
+    setWeeklyAccumulatedBalance(state, action: PayloadAction<number>) {
+      state.accumulatedBalance.weekly = action.payload;
+    },
+    setMonthlyAccumulatedBalance(state, action: PayloadAction<number>) {
+      state.accumulatedBalance.monthly = action.payload;
     },
   },
 });
